@@ -1,0 +1,2 @@
+ext.springVersion = '4.3.6.RELEASE'
+ext.hibernateVersion = '5.2.8.Final'

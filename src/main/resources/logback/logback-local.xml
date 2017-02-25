@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.out</target>
+		<encoder>
+			<pattern>%d %5p %t %c:%M:%L - %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>f:/data/logs/local/sl/sl.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>f:/data/logs/local/sl/sl-%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d %5p %t %c:%M:%L - %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework" level="DEBUG" />
+	<logger name="org.hibernate" level="TRACE"></logger>
+
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</included>
